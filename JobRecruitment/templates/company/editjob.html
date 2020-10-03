@@ -1,0 +1,29 @@
+{% extends 'company/combase.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/details.css' %}">
+{% endblock head %}
+{% block body %}
+<div class="container mt-5 contact-section">
+
+  <h1>Add JOB Details</h1>
+  <div class="border my-4"></div>
+  <form class="contact-form" action="{%url 'editjob' editjob.id %}" method="post">
+    {% csrf_token %}
+    Job Name<input type="text" class="contact-form-text my-4" placeholder="Job name" name="job_name"
+      value="{{editjob.job_name}}" required>
+    Job Description<textarea rows="10" class="contact-form-text my-4" placeholder="Job Description"
+      name="job_description" required>{{editjob.job_description}}</textarea>
+    Job Location<input type="text" class="contact-form-text my-4" placeholder="Location" name="location"
+      value="{{editjob.location}}" required>
+    Job Salary<input type="number" class="contact-form-text my-4" placeholder="Salary" name="salary"
+      value="{{editjob.salary}}" required>
+    Job Deadline<input type="date" class="contact-form-text my-4" placeholder="Deadline" name="deadline"
+      value="{{editjob.deadline.year}}-{{editjob.deadline.month}}-{{editjob.deadline.day}}" required>
+    Job Skill <input type="text" class="contact-form-text my-4" placeholder="Skill Set 1" name="skill_required_1"
+      value="{{editjob.skillsReqd}}" required>
+    
+    <input type="submit" class="contact-form-btn" value="SAVE">
+  </form>
+</div>
+{% endblock body %}

@@ -1,0 +1,56 @@
+{% extends 'company/combase.html' %}
+{% load static %}
+{% block head %}
+
+{% endblock head %}
+{% block body %}
+<h5> Jobs </h5>
+{% if jobs %}
+
+
+<div class=" container mt-5 table-responsive">
+  <table class="table table-hover table-dark  " style="background-color:black">
+    <thead>
+      <tr>
+        <th scope="col">S.No</th>
+        <th scope="col">Job Role</th>
+        <th scope="col">Salary</th>
+        <th scope="col">Posted Date</th>
+        <th scope="col">Deadline</th>
+        <th scope="col">Actions</th>
+
+      </tr>
+    </thead>
+    <tbody>
+
+
+      {%  for item in jobs %}
+
+
+
+
+      <tr>
+
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{{ item.job_name }}</td>
+        <td>{{ item.salary }}</td>
+        <td>{{ item.posted_date }}</td>
+        <td>{{ item.deadline }}</td>
+
+        <td>
+          <a href="{%url 'viewjob' item.id %}" class="btn btn-info text-white">View</a>
+        </td>
+
+
+      </tr>
+      {% endfor %}
+
+      {% else %}
+
+      <h6 style="margin-top: 100px;color: #c9302c"> You have not created any jobs </h6>
+
+      {% endif %}
+</div>
+
+
+{% endblock body %}
