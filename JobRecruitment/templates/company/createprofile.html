@@ -1,0 +1,27 @@
+{% extends 'company/combase.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/details.css' %}">
+{% endblock head %}
+{% block body %}
+
+
+
+<div class="container mt-5 contact-section">
+
+  <h1>Add Company Details</h1>
+  <div class="border"></div>
+  <form class="contact-form" action="/company/createprofile" method="post">
+    {% csrf_token %}
+    <input type="text" class="contact-form-text my-4" placeholder="Company name" name="companyname" required>
+    <input type="number" class="contact-form-text my-4" placeholder="Phone" name="phone" required>
+    <input type="text" class="contact-form-text my-4" placeholder="Location" name="address" required>
+
+    <input type="submit" class="contact-form-btn" value="Send">
+  </form>
+</div>
+
+
+
+
+{% endblock body %}

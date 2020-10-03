@@ -1,0 +1,41 @@
+{% extends 'devbase.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock head %}
+{% block body %}
+<form method="POST" action="/developer/createprofile">
+{% csrf_token %}
+        <div class="div">
+           	<h5>firstname</h5>
+           	<input type="text" name="firstname" class="input" required>
+        </div>
+        <div class="div">
+           	<h5>Last name</h5>
+           	<input type="text" name="lastname" class="input" required>
+        </div>
+        <div class="div">
+           	<h5>Address</h5>
+           	<input type="text" name="address" class="input" required>
+        </div>
+        <div class="div">
+           	<h5>Phone</h5>
+           	<input type="number" name="phone" class="input" required>
+        </div>
+        <div class="div">
+           	<h5>Current job</h5>
+           	<input type="text" name="currentjob" class="input" >
+        </div>
+        <div class="div">
+           	<h5>current comp</h5>
+           	<input type="text" name="currentcompany" class="input" >
+        </div>
+
+         <div class="div">
+           	<h5>DOB</h5>
+           	<input type="date" name="dob" class="input" >
+        </div>
+  <button type="submit">submit</button>
+</form>
+
+{% endblock body %}

@@ -1,0 +1,24 @@
+{% extends 'company/combase.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/details.css' %}">
+{% endblock head %}
+{% block body %}
+<div class="container mt-5 contact-section">
+
+  <h1>Add JOB Details</h1>
+  <div class="border my-4"></div>
+  <form class="contact-form" action="/company/addjob" method="post">
+    {% csrf_token %}
+    <input type="text" class="contact-form-text my-4" placeholder="Job name" name="job_name" required>
+    
+    <input type="text" class="contact-form-text my-4" placeholder="Location" name="location" required>
+    <input type="number" class="contact-form-text my-4" placeholder="Salary" name="salary" required>
+    <input type="date" class="contact-form-text my-4" placeholder="Deadline" name="deadline" required>
+    <input type="text" class="contact-form-text my-4" placeholder="Skill Set 1" name="skill_required_1" required>
+    <textarea rows="4" class="contact-form-text my-4" placeholder="Job Description" name="job_description" required></textarea>
+    <input type="submit" class="contact-form-btn" value="Add">
+  </form>
+</div>
+
+{% endblock body %}

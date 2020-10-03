@@ -1,0 +1,90 @@
+{% extends 'company/combase.html' %}
+{% load static %}
+{% block head %}
+
+{% endblock head %}
+{% block body %}
+
+<div class="container  my-5">
+        <table class="table table-striped">
+                <thead>
+                        <tr>
+                                <th scope="col">Job Name</th>
+                                <th scope="col">{{viewjob.job_name}}</th>
+                        </tr>
+                </thead>
+                <thead>
+                        <tr>
+                                <th scope="col">Job Desription</th>
+                                <th scope="col" class="{% cycle 'row1' 'row2' %}">
+                                        {{viewjob.job_description | truncatechars:100}}</th>
+                        </tr>
+                </thead>
+                <thead>
+                        <tr>
+                                <th scope="col">Job Salary</th>
+                                <th scope="col">{{viewjob.salary}}</th>
+                        </tr>
+                </thead>
+                <thead>
+                        <tr>
+                                <th scope="col">Job Location</th>
+                                <th scope="col">{{viewjob.location}}</th>
+                        </tr>
+                </thead>
+                <thead>
+                        <tr>
+                                <th scope="col">Job Deadline</th>
+                                <th scope="col">{{viewjob.deadline}}</th>
+                        </tr>
+                </thead>
+
+        </table>
+
+
+        <table>
+                <thead>
+                        <tr>
+                                <td><a href="{%url 'editjob' viewjob.id %}" class="btn btn-warning mx-4">Edit job</a>
+                                </td>
+                                <td><a href="#" class="btn btn-info mx-4">View Applicants</a></td>
+                                <td>
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-danger" data-toggle="modal"
+                                                data-target="#exampleModal">
+                                                Delete Job
+                                        </button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal" tabindex="-1"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">
+                                                                                Are you sure you want to delete this job?</h5>
+                                                                        <button type="button" class="close"
+                                                                                data-dismiss="modal" aria-label="Close">
+                                                                                <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                </div>
+                                                                
+                                                                <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary"
+                                                                                data-dismiss="modal">Close</button>
+                                                                        <a href="{%url 'deletejob' viewjob.id %}"
+                                                                                class="btn btn-danger">
+                                                                                Delete</a>
+                                                                </div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </td>
+                        </tr>
+                </thead>
+        </table>
+</div>
+
+
+
+{% endblock body %}
