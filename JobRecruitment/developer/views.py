@@ -2,6 +2,7 @@ from django.shortcuts import render,HttpResponse
 from account.models import DeveloperProfile,User
 from django.contrib.auth.decorators import login_required
 
+from django.contrib import messages
 # Create your views here.
 @login_required
 def profile(request):
@@ -28,9 +29,9 @@ def createprofile(request):
             
             profile.address = address
             profile.phone = phone
-            profile.birthDate = dob
-            profile.current_job = currentjob
-            profile.company = company
+            profile.dob = dob
+            profile.currentJobName = currentjob
+            profile.currentCompany = company
             profile.save()
             return render(request,'developer/profile.html')
 
@@ -41,12 +42,13 @@ def createprofile(request):
             
             address = address,
             phone = phone,
-            birthDate = dob,
-            current_job_role = currentjob,
-            current_company = company,
+            dob = dob,
+            currentJobName = currentjob,
+            currentCompany = company,
             developer_id=request.user.id
             ).save()
-            return render(request,'developer/profile.html')
+            messages.success(request,'Details saved')
+            return redirect('profiledev')
     else:
         
         return render(request,'developer/createprofile.html')

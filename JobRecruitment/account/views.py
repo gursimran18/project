@@ -139,7 +139,11 @@ def login_view(request):
             login(request, user)
             
             if request.user.is_developer:
-                return redirect('profiledev')
+                try:
+                    profile = DeveloperProfile.objects.get(developer_id=request.user.id)
+                    return redirect('profiledev')
+                except DeveloperProfile.DoesNotExist:    
+                    return redirect('createprofiledev')
             if request.user.is_company:
                 try:
                     profile = CompanyProfile.objects.get(company_id=request.user.id)
